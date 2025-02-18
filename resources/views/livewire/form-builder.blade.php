@@ -1,7 +1,9 @@
+<!-- Main Container -->
 <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
     <div class="w-85 bg-gray-900 text-white">
         <div class="p-4">
+              <!-- Sidebar Header with Icon and Title -->
             <div class="flex items-center mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -9,6 +11,7 @@
                 <span class="ml-2 text-lg font-semibold">Form Builder</span>
             </div>
             
+            <!-- Sidebar Navigation Links -->
             <nav>
                 <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-800 mb-1">My Forms</a>
                 <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-800 mb-1">Analytics</a>
@@ -16,6 +19,7 @@
                 <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-800 mb-1">Help & Support</a>
             </nav>
             
+            <!-- Sidebar Footer with Profile Info -->
             <div class="absolute bottom-0 left-0  p-4">
                 <div class="text-sm">My Profile</div>
                 <div class="text-xs text-gray-400">Logged in</div>
@@ -38,7 +42,7 @@
             </button>
         </div>
 
-        <!-- Form Builder Content -->
+        <!-- Alert Messages -->
         @if (session()->has('message'))
             <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
                 {{ session('message') }}
@@ -58,13 +62,12 @@
                                class="w-full text-lg font-semibold bg-transparent border-b-2 border-gray-200 pb-2 focus:outline-none focus:border-blue-500"
                                style="font-family: {{ $formSettings['fontFamily'] }}">
                     </div>
-                    {{-- {{dd($fields)}} --}}
                     <!-- Form Fields -->
                     @foreach($fields as $index => $field)
                            
                         <div class="mb-4 relative " wire:key="field-{{ $field['id'] }}">
                             @if($formSettings['labels'])
-                                <label class="block text-sm font-medium mb-1" style="font-family: {{ $formSettings['fontFamily'] }}">
+                                <label class="block text-sm font-medium mb-1" style="font-family:{{ $formSettings['fontFamily'] }}">
                                     {{ $field['label'] }}
                                 </label>
                             @endif
@@ -101,7 +104,6 @@
                                     </button>
                                     @break
                               
-                                
                                 @case('checkbox')
                                     <div class="flex items-center">
                                         <input type="checkbox" class="h-4 w-4 text-blue-600" name={{$field['name']}}>
@@ -129,7 +131,7 @@
                             Add New Field
                         </button>
                         
-                        <!-- Field Type Selector Dropdown -->
+                        <!-- Add Form Fields Form -->
                         @if($showFieldTypeSelector ?? false)
                         <div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-[9]" >
                             <div class="bg-white p-8 rounded-lg shadow-lg w-3/4 max-w-4xl">
@@ -148,7 +150,6 @@
                                     <div class="grid grid-cols-2 gap-4 p-2">
                                         <input type="text" placeholder="Field Name" name='fieldname' class="block w-full px-3 py-2 border rounded bg-white" required/>
                                     </div>
-
                                     
                                     <button type="button" wire:click="$toggle('showFieldTypeSelector')" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
 

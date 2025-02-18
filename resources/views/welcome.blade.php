@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased font-sans">
-
+        <!-- Form builder component-->
         @livewire('form-builder') 
         
     </body>
