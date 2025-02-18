@@ -9,14 +9,15 @@ class Form extends Model
 {
     use HasFactory;
 
+    // Define the table name (optional, as Laravel will use the plural form of the model name by default)
+    protected $table = 'form';
+
+    // Define the fillable fields (these are the columns that can be mass-assigned)
     protected $fillable = [
-        'title',
-        'fields',
-        'settings',
+        'label',
+        'bg_color',
+        'font_family',
+        'has_form_labels',
     ];
 
-    protected $casts = [
-        'fields' => 'array',
-        'settings' => 'array',
-    ];
 }
